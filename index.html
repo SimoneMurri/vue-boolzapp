@@ -45,17 +45,31 @@
                       </form>
                 </div>
                 <div class="contacts">
-                    <!-- TODO: contacts list will show up here -->
+                    <article v-for="(contact, contactIndex) in contacts" :key="index" @click="selectContact(contactIndex)">
+                        <img :src="contact.avatar" alt="Avatar">
+                        <span class="contact-name">
+                            {{ contact.name }}
+                        </span>
+                        <p class="last-message gray">Ultimo messaggio inviato</p>
+                        <div class="position gray">
+                            <span>12:00</span>
+                        </div>
+                    </article>
                 </div>
             </section>
             <section class="conversation-container flex flex-column">
                 <div class="user-access">
                     <div class="user">
-                        <img src="./img/avatar_1.jpg" alt="">
-                        <div class="notifications-desktop">
-                            <span>Michele</span>
-                            <br>
+                        <img v-for="avatar in cotacts" :src="contacts.avatar">
+                        <article>
+                            <p>
+                                {{ contacts[activeContact].name }}
+                            </p>
                             <span class="color-gray">Ultimo accesso oggi alle 12:00</span>
+                        </article>
+                        <div class="notifications-desktop">
+                            
+                      
                         </div>
                         <div class="font">
                             <span><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -65,20 +79,15 @@
                     </div>
                 </div>
                 <div class="messages clearfix">
-                    <article class="message received">
-                        Sciao Belo, stasero vieno?
-                    </article>
-                    <article class="message sent">
-                        No dottoressa, veramente sarei occupato.
-                    </article>
-                    <article class="message received">
-                        Si ma tu ha serio problemo, sposto sembro!
-                    </article>
-                    <article class="message sent">
-                        Se vengo da una psichiatra ci sara' un motivo!!!!
+                    <article v-for="message in contacts[activeContact].messages" class="message" :class="message.status === 'sent' ? 'sent' : 'received' ">
+                        {{ message.message }}
                     </article>
                 </div>
-                <div class="message-input"></div>
+                <div class="message-input">
+                    <span><i class="fa-regular fa-face-smile"></i></span>
+                    <input type="text" placeholder=" Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
+                    <span><i class="fa-solid fa-microphone"></i></span>
+                </div>
             </section>
         </main>
     </div>

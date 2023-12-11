@@ -60,6 +60,7 @@ div.messages{
     height: calc(100% - 145px);
     background-image: url('../img/mine.jpg');
     padding: 2rem;
+    overflow-y: auto;
 }
 
 div.messages > article.message{
@@ -180,4 +181,51 @@ input[type="text"] {
 
 .user-access .font {
     padding-left: 28rem;
+}
+
+section.userbar div.contacts > article {
+    padding: .19rem;
+    width: 100%;
+    border-bottom: 1px solid rgb(244, 244, 244);
+    position: relative;
+}
+
+.gray {
+    color: rgb(194, 194, 194);
+    font-size: 12px;
+}
+
+div.position span {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.contact-name {
+    position: absolute;
+    left: 50px;
+    top: 5px;
+}
+
+.last-message {
+    position: absolute;
+    left: 50px;
+    bottom: 10px;
+}
+
+.message-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fa-face-smile {
+    font-size: 25px;
+    color: rgb(172, 170, 170);
+}
+
+.fa-microphone {
+    font-size: 25px;
+    color: rgb(173, 173, 173);
 }
